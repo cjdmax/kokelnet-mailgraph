@@ -287,7 +287,6 @@ HEADER
 		print "<img src=\"$scriptname?${n}-e\" alt=\"mailgraph\"/></p>\n";
 		print "<img src=\"$scriptname?${n}-g\" alt=\"mailgraph\"/></p>\n";
 		print "<img src=\"$scriptname?${n}-p\" alt=\"mailgraph\"/></p>\n";
-		print "<img src=\"$scriptname?${n}-q\" alt=\"mailgraph\"/></p>\n";
 	}
 
 	print <<FOOTER;
@@ -316,9 +315,9 @@ sub send_image($)
 		exit 1;
 	};
 
-	print "Content-type: image/png\n" unless $ARGV[0];
-	print "Content-length: ".((stat($file))[7])."\n" unless $ARGV[0];
-	print "\n" unless $ARGV[0];
+	print "Content-type: image/png\n";
+	print "Content-length: ".((stat($file))[7])."\n";
+	print "\n";
 	open(IMG, $file) or die;
 	my $data;
 	print $data while read(IMG, $data, 16384)>0;
